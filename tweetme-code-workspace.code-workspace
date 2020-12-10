@@ -3,5 +3,8 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"python.pythonPath": "c:\\Users\\deepa\\.virtualenvs\\tweetme2-oqEYsugg\\Scripts\\python.exe"
+	}
 }
