@@ -18,6 +18,7 @@ class Tweet(models.Model):
     likes=models.ManyToManyField(User,related_name='tweet_user',blank=True,through=TweetLike)
     timestamp=models.DateTimeField(auto_now_add=True)
     
+    
     # def __str__(self):
     #     return self.content
     class Meta:
