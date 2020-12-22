@@ -24,10 +24,12 @@ SECRET_KEY = 'x48ymbm+rqhs80-4sw0rbphjmzatxl%-qp940049fv4g-&gh7v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+MAX_TWEET_LENGTH=250
 ALLOWED_HOSTS = ['127.0.0.1',]
 
-
+LOGIN_URL='/login'
+TWEET_ACTION_OPTIONS=['like','unlike','retweet']
+# APPEND_SLASH=False
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third party
+    'rest_framework',
     'tweets',
 ]
 
@@ -113,6 +117,24 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+DEFAULT_RENDERER_CLASSES=[
+                            'rest_framework.renderers.JSONRenderer',
+                            
+                        ]
+if DEBUG:
+    DEFAULT_RENDERER_CLASSES+=['rest_framework.renderers.BrowsableAPIRenderer',]
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+
+    'DEFAULT_RENDERER_CLASSES':DEFAULT_RENDERER_CLASSES
+}
+
 
 
 # Static files (CSS, JavaScript, Images)
